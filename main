@@ -1,0 +1,20 @@
+const palette = [
+  { hue: 0, saturation: 1, lightness: 0.5 },
+  { hue: 60, saturation: 1, lightness: 0.5 },
+  { hue: 120, saturation: 1, lightness: 0.5 },
+  { hue: 180, saturation: 1, lightness: 0.5 },
+  { hue: 240, saturation: 1, lightness: 0.5 }
+];
+
+// create color scale
+const colorScale = d3.scaleLinear()
+  .domain([0, palette.length - 1])
+  .range([0, 360]);
+
+// generate colors
+const colors = palette.map((color, i) => {
+  const hue = colorScale(i);
+  return `hsl(${hue}, ${color.saturation * 100}%, ${color.lightness * 100}%)`;
+});
+
+console.log(colors); // ['hsl(0, 100%, 50%)', 'hsl(60, 100%, 50%)', 'hsl(120, 100%, 50%)', 'hsl(180, 100%, 50%)', 'hsl(240, 100%, 50%)']
